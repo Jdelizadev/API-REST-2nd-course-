@@ -1,0 +1,27 @@
+{
+  "name": "api-rest-2nd-course-",
+  "version": "1.0.0",
+  "description": "API rest course",
+  "main": "index.js",
+  "scripts": {
+    "sass:build": "sass src/sass:public/css",
+    "sass:watch": "sass --watch src/sass:public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jdelizadev/API-REST-2nd-course-.git"
+  },
+  "keywords": [
+    "Api",
+    "rest"
+  ],
+  "author": "Jaime De Lizaola <jaimedelizaola@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jdelizadev/API-REST-2nd-course-/issues"
+  },
+  "homepage": "https://github.com/Jdelizadev/API-REST-2nd-course-#readme",
+  "devDependencies": {
+    "sass": "^1.90.0"
+  }
+}
