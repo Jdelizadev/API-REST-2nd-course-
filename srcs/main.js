@@ -36,15 +36,18 @@ async function getCategories() {
         console.log(data.genres) 
 
         data.genres.forEach(genre => {
-            const reference = document.querySelector('#trendingPreview .trendingPreview-movieList')
-            const movieContainer = document.createElement('div')
-            movieContainer.classList.add('movie-container')
-            const movieImg = document.createElement('img')
-            movieImg.classList.add('movie-img')
-            movieImg.setAttribute('alt', movie.title)
-            movieImg.setAttribute('src', URlimages(movie.poster_path))
-            movieContainer.appendChild(movieImg)
-            reference.appendChild(movieContainer)
+            const reference = document.querySelector('#categoriesPreview .categoriesPreview-list')
+
+            const genreContainer = document.createElement('div')
+            genreContainer.classList.add('category-container')
+
+            const h3 = document.createElement('h3')
+            h3.classList.add('category-title')
+            h3.setAttribute('id', `id${genre.id}`)
+            h3.innerHTML = genre.name
+
+            genreContainer.appendChild(h3)
+            reference.appendChild(genreContainer)
         });
 
     } catch (error) {

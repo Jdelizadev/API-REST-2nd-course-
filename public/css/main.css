@@ -1,6 +1,3 @@
-
-/*# sourceMappingURL=main.css.map */
-
 /* General */
 * { box-sizing: border-box; }
 
@@ -228,9 +225,9 @@ button {
 }
 
 .category-title::before {
-  content: 'â€¢â€¢â€¢â€¢';
+  content: '••••';
   color: transparent;
-  /* TODO: cambiar color por ID de la categorÃ­a */
+  /* TODO: cambiar color por ID de la categoría */
   background-color: var(--idColor);
   border-radius: 8px;
   margin-right: 8px;
@@ -302,7 +299,7 @@ button {
   font-weight: var(--font-weight-title2);
 }
 .movieDetail-score::before {
-  content: 'â˜…';
+  content: '★';
   color: var(--yellow);
   padding-right: 4px;
 }
