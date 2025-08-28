@@ -9,10 +9,9 @@ async function getTrendingMovies() {
        const res = await fetch(URLtrendingMovies);
        
        const data = await res.json()
-       console.log(data.results)
+       trendingMoviesPreviewList.innerHTML = ''
 
        data.results.forEach(movie => {
-            const reference = document.querySelector('#trendingPreview .trendingPreview-movieList')
             const movieContainer = document.createElement('div')
             movieContainer.classList.add('movie-container')
             const movieImg = document.createElement('img')
@@ -20,7 +19,7 @@ async function getTrendingMovies() {
             movieImg.setAttribute('alt', movie.title)
             movieImg.setAttribute('src', URlimages(movie.poster_path))
             movieContainer.appendChild(movieImg)
-            reference.appendChild(movieContainer)
+            trendingMoviesPreviewList.appendChild(movieContainer)
         });
 
     } catch (error) {
@@ -33,10 +32,9 @@ async function getCategories() {
     try {
         const res = await fetch(URLcategories)
         const data = await res.json()
-        console.log(data.genres) 
+        categoriesPreviewList.innerHTML = ''
 
         data.genres.forEach(genre => {
-            const reference = document.querySelector('#categoriesPreview .categoriesPreview-list')
 
             const genreContainer = document.createElement('div')
             genreContainer.classList.add('category-container')
@@ -47,7 +45,7 @@ async function getCategories() {
             h3.innerHTML = genre.name
 
             genreContainer.appendChild(h3)
-            reference.appendChild(genreContainer)
+            categoriesPreviewList.appendChild(genreContainer)
         });
 
     } catch (error) {
@@ -60,10 +58,9 @@ async function getTrendingSeries() {
        const res = await fetch(URLtrendingSeries);
        
        const data = await res.json()
-       console.log(data.results)
+       seriesPreviewList.innerHTML = ''
 
        data.results.forEach(movie => {
-            const reference = document.querySelector('#trendingPreviewSeries .trendingPreview-movieList')
             const movieContainer = document.createElement('div')
             movieContainer.classList.add('movie-container')
             const movieImg = document.createElement('img')
@@ -71,7 +68,7 @@ async function getTrendingSeries() {
             movieImg.setAttribute('alt', movie.title)
             movieImg.setAttribute('src', URlimages(movie.poster_path))
             movieContainer.appendChild(movieImg)
-            reference.appendChild(movieContainer)
+            seriesPreviewList.appendChild(movieContainer)
         });
 
     } catch (error) {
@@ -81,6 +78,4 @@ async function getTrendingSeries() {
 }
 
 
-getTrendingSeries()
-getCategories()
-getTrendingMovies()
+
