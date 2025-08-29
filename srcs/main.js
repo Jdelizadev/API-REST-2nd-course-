@@ -2,7 +2,13 @@ const URLtrendingMovies = 'https://api.themoviedb.org/3/trending/movie/day?api_k
 const URlimages = (i) => `https://image.tmdb.org/t/p/w300/${i}`
 const URLcategories = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
 const URLtrendingSeries = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`
+const URLgetByCategory = (i) => `https://api.themoviedb.org/3/discover/movie?with_genres=${i}&api_key=${API_KEY}`
 
+//Utils
+
+
+
+//LLamados a la API
 
 async function getTrendingMovies() {
     try {
@@ -43,6 +49,9 @@ async function getCategories() {
             h3.classList.add('category-title')
             h3.setAttribute('id', `id${genre.id}`)
             h3.innerHTML = genre.name
+            h3.addEventListener('click', () => {
+                location.hash = `#category=${genre.id}-${genre.name}`
+            })
 
             genreContainer.appendChild(h3)
             categoriesPreviewList.appendChild(genreContainer)
@@ -70,6 +79,30 @@ async function getTrendingSeries() {
             movieContainer.appendChild(movieImg)
             seriesPreviewList.appendChild(movieContainer)
         });
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+async function searchByCategory(id) {
+    try {
+       const res = await fetch(URLgetByCategory(id));
+       
+       const data = await res.json()
+       genericSection.innerHTML = ''
+     
+        data.results.forEach(movie => {
+         const movieContainer = document.createElement('div')
+             movieContainer.classList.add('movie-container')
+             const movieImg = document.createElement('img')
+             movieImg.classList.add('movie-img')
+             movieImg.setAttribute('alt', movie.title)
+             movieImg.setAttribute('src', URlimages(movie.poster_path))
+             movieContainer.appendChild(movieImg)
+             genericSection.appendChild(movieContainer)
+         });
 
     } catch (error) {
         console.log(error)
